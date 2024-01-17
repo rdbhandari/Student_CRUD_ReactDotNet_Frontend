@@ -19,7 +19,6 @@ export default function StudentForm() {
     axios.get(URL)
         .then((response) => {
             setAPIData(response.data);
-            console.log(response.data)
         })
   }
   const handleSubmit = (e) =>{
@@ -50,7 +49,8 @@ export default function StudentForm() {
       }   
       axios.post(URL, payload);
     }
-    fetchData();
+    clearForm();
+    toggleModal();
   }
   const clearForm = () =>{
     // setID('');setStudentname(''); setPhone (''); setStreet (''); setPincode (''); setCountry ('');
@@ -69,6 +69,12 @@ export default function StudentForm() {
   const deleteData = (id) => {
     axios.delete(`${URL}/${id}`);
   }
+
+  const toggleModal= () => {
+    // document.getElementById("#formModal").modal('toggle')
+    $('#formModal').modal('toggle')
+  }
+
 
   return (
     <div className="container-xl">
